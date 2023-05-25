@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import AddTaskForm from "./AddTaskForm/AddTaskForm";
+import Task from "./Task/Task";
+import task from "./Task/Task";
 
-function App() {
+const App = () => {
+  const [tasks, setTasks] = useState([
+    {taskText: 'buy milk', id: 1123},
+    {taskText: 'buy bread', id: 1124},
+    {taskText: 'buy vodka', id: 1125}
+  ]);
+
+  let taskList: React.ReactNode | null = null;
+
+
+  taskList = tasks.map((task, index) =>{
+    return(
+      <Task
+        taskId={task.id}
+        taskText={task.taskText}
+      >
+      </Task>
+    )
+  })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AddTaskForm></AddTaskForm>
+      {taskList}
     </div>
   );
-}
-
+};
 export default App;
