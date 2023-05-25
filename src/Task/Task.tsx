@@ -3,7 +3,7 @@ import React from 'react';
 interface ITaskProps extends React.PropsWithChildren {
   taskText: string;
   taskId: number;
-  //onRemoveTask: React.MouseEventHandler;
+  onRemoveTask: React.MouseEventHandler;
 }
 
 const Task: React.FC<ITaskProps> = props => {
@@ -11,7 +11,7 @@ const Task: React.FC<ITaskProps> = props => {
     <div>
       <div>
         <span>{props.taskText}</span>
-        <button>Remove</button>
+        <button onClick={props.onRemoveTask}>Remove</button>
       </div>
     </div>
   );
